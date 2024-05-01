@@ -9,9 +9,9 @@ const userSchema = new mongoose.Schema({
     match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, 'Please enter a valid email address']
     },
     //thoughts references the thought model
-   thoughts: [{ type: Schema.Types.ObjectId, ref: 'thought' }],
+   thoughts: [{ type: Schema.Types.ObjectId, ref: 'Thought' }],
    //friends self-references the user model
-   friends:[{ type: Schema.Types.ObjectId, ref: 'user' }]
+   friends:[{ type: Schema.Types.ObjectId, ref: 'User' }]
    
    //used lastAccessed to get current data: do I need this for the user?
 });

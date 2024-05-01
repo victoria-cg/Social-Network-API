@@ -1,5 +1,6 @@
 // import and define Mongoose
 const mongoose = require('mongoose');
+const reactionSchema = require('./Reaction');
 
 // Create a new instance of the Mongoose schema to define shape of each document
 const thoughtSchema = new mongoose.Schema({
@@ -10,10 +11,11 @@ const thoughtSchema = new mongoose.Schema({
   //doesn't it need to reference the user table, is the syntax below right even thought this isn't explicitly stated in acceptance criteria
  //does the many to one blog/user relationship have to be defined in this direction or just from the user side?
   //username: {type: Schema.Types.ObjectId, ref: 'user',},
-  username: { type: String, required: true}
+  username: { type: String, required: true},
   //TO DO: Make nested documents with the reaction schema and create a virtual for reaction count
-  reactions:[]
+  reactions: [reactionSchema],
 });
+
 
 //create a virtual property to format the createdAt date and time
 thoughtSchema

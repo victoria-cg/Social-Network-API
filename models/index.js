@@ -1,4 +1,5 @@
 //Item is placeholder example from class activity, need to replace with model name and require and export all models
-const Item = require('./Item');
+const Thought = require('./Thought');
+const User = require("./User")
 
-module.exports = { Item };
+module.exports = { Thought, User };

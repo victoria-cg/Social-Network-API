@@ -1,0 +1,27 @@
+const express = require('express');
+const db = require('./config/connection');
+const routes = require('./routes');
+
+const cwd = process.cwd();
+
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+const requestMade = (req,res,next) => {
+    console.log("Request was made!")
+    next()
+}
+
+app.use(requestMade)
+app.use(routes);
+
+db.once('open', () => {
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+  });
+});
