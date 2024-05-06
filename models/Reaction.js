@@ -32,16 +32,11 @@ const reactionSchema = new Schema(
   }
 )
 
-//question: can I use the same getter syntax as in the Thought.js model?
 
-// //create a virtual property to format the createdAt date and time
-// reactionSchema
-//   .virtual('formatCreatedAt')
-//   // Getter for formatting timestamp on query
-//   .get(function () {
-//     return this.createdAt.toDateString();
-//   })
-//   //setter to tell the JSON schema settings to include virtuals when converting the document to a JSON object
-//   .set('toJSON', { virtuals: true });
+//create a getter method to formate the 'created at' date
+SubdocumentSchema.path('createdAt').get(function(value) {
+//return formatted date as a string
+return value.toDateString();
+});
 
 module.exports = reactionSchema;
