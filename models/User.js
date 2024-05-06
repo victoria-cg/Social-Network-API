@@ -12,11 +12,18 @@ const userSchema = new mongoose.Schema({
    thoughts: [{ type: Schema.Types.ObjectId, ref: 'Thought' }],
    //friends self-references the user model
    friends:[{ type: Schema.Types.ObjectId, ref: 'User' }]
-   
    //used lastAccessed to get current data: do I need this for the user?
-});
+},
+//need virtuals: true for virtuals to work
+{
+  toJSON: {
+    virtuals: true,
+  },
+  id: false,
+}
+);
 
-//'friendCount' virtual to retrieve the legnth of the user's friends array field on query 
+//'friendCount' virtual to retrieve the length of the user's friends array field on query 
 userSchema.virtual('friendCount').get(function () {
     return this.friends.length;
   });
